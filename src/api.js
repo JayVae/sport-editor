@@ -38,9 +38,9 @@ export async function loginByPassword(username, password) {
 
     // 获取Code
     log.info(res);
-    log.info(path);
     const path = new URL(res.request.path, redirect_uri);
     const params = path.searchParams;
+    log.info(path);
     log.info(params);
     if (params.has("access")) {
       const code = params.get("access");
