@@ -38,7 +38,10 @@ export async function loginByPassword(username, password) {
 
     // 获取Code
     const path = new URL(res.request.path, redirect_uri);
+    log.info(res);
+    log.info(path);
     const params = path.searchParams;
+    log.info(params);
     if (params.has("access")) {
       const code = params.get("access");
       log.info(`获取登录授权码成功 code: ${code}`);
