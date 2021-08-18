@@ -37,14 +37,14 @@ export async function loginByPassword(username, password) {
     log.info("登录成功, 开始获取登录授权码");
 
     // 获取Code
-    log.info(res);
+    // log.info(res);
     const path = new URL(res.request.path, redirect_uri);
     const params = path.searchParams;
-    log.info(path);
-    log.info(params);
+    // log.info(path);
+    // log.info(params);
     if (params.has("access")) {
       const code = params.get("access");
-      log.info(`获取登录授权码成功 code: ${code}`);
+      // log.info(`获取登录授权码成功 code: ${code}`);
       return code;
     }
     throw new Error("获取登录授权码失败");
@@ -99,7 +99,7 @@ export async function getAccessToken(code) {
     const res = await axios.post("https://account.huami.com/v2/client/login", data);
 
     const token_info = res.data.token_info;
-    log.info(`获取AccessToken成功 token: ${token_info.login_token}`);
+    // log.info(`获取AccessToken成功 token: ${token_info.login_token}`);
     return token_info;
   } catch (e) {
     log.error("获取AccessToken失败");
